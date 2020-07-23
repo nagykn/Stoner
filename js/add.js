@@ -51,7 +51,7 @@ function saveLoacalNames(name) {
   } else {
     names = JSON.parse(localStorage.getItem('names'));
   }
-  const isSame = (v) => v.name !== name;
+  const isSame = (v) => v.name !== name; //kétszer van tagadva-->igaz; nem javítom ki, működik
   if (!names.every(isSame)) {
     document.querySelector('#error').innerText = 'Ilyen nevű játékos már létezik!'
     setTimeout(()=>{
@@ -62,7 +62,7 @@ function saveLoacalNames(name) {
     let player = new Player(names.length,name,"");
     names.push(player);
     localStorage.setItem('names',JSON.stringify(names));
-    return true
+    return true 
   }
 }
 
@@ -99,8 +99,12 @@ function removeLocalName(name){
   } else {
     names = JSON.parse(localStorage.getItem('names'));
   }
-  const nameIndex = name.children[0].innerText;
-  names.splice(names.indexOf(nameIndex),1);
+  const nameText = name.children[0].innerText;
+  names.forEach((player, index) => {
+    if (player.name === nameText) {
+      names.splice(index,1)
+    }
+  });
 
   localStorage.setItem('names', JSON.stringify(names));
 }
@@ -109,6 +113,5 @@ function removeLocalName(name){
 String.prototype.toProperCase = function () {
   return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
-
 
 
