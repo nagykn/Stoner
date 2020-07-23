@@ -1,7 +1,10 @@
+const KORTY = 20;
+
 class Player{
-    constructor(id,name) {
+    constructor(id,name,stand) {
         this.id = id;
         this.name = name;
-        this.stand = None;
+        this.stand = stand;
+        this.cup = 100;
     }
 }

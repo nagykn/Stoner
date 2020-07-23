@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stoner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css"> 
 </head>
 <body>
     <span id="error"></span>
@@ -30,6 +30,7 @@
         </div>
     </main>
 </body>
+<script src="js/player.js"></script>
 <script>
 
   const nameList = document.querySelector('.name-list');
@@ -41,12 +42,12 @@
     names = JSON.parse(localStorage.getItem('names'));
   }
   n.innerText = names.length;
-  names.forEach(name => {
+  names.forEach(player => {
     const nameDiv = document.createElement('div');
     nameDiv.classList.add('name');
 
     const newName = document.createElement('li');
-    newName.innerText = name;
+    newName.innerText = player.name;
 
     newName.classList.add('name-item');
     nameDiv.appendChild(newName);

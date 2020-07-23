@@ -24,12 +24,13 @@ function addName(event) {
   nameDiv.appendChild(newName);
 
   const trashButton = document.createElement('button');
-  trashButton.innerText = 'Delete';
+  trashButton.innerText = 'Remove';
   trashButton.classList.add('trash-btn');
   nameDiv.appendChild(trashButton);
   if (name !== "") {
-    saveLoacalNames(name);
-    nameList.appendChild(nameDiv);
+    if (saveLoacalNames(name)) {
+      nameList.appendChild(nameDiv);
+    }
   }
   nameInput.value = "";
 }
@@ -50,8 +51,19 @@ function saveLoacalNames(name) {
   } else {
     names = JSON.parse(localStorage.getItem('names'));
   }
-  names.push(name);
-  localStorage.setItem('names',JSON.stringify(names));
+  const isSame = (v) => v.name !== name;
+  if (!names.every(isSame)) {
+    document.querySelector('#error').innerText = 'Ilyen nevű játékos már létezik!'
+    setTimeout(()=>{
+        document.querySelector('#error').innerText = "";
+    },3000);
+    return false
+  } else {
+    let player = new Player(names.length,name,"");
+    names.push(player);
+    localStorage.setItem('names',JSON.stringify(names));
+    return true
+  }
 }
 
 function getNames() {
@@ -61,12 +73,12 @@ function getNames() {
   } else {
     names = JSON.parse(localStorage.getItem('names'));
   }
-  names.forEach(name => {
+  names.forEach(player => {
     const nameDiv = document.createElement('div');
     nameDiv.classList.add('name');
 
     const newName = document.createElement('li');
-    newName.innerText = name;
+    newName.innerText = player.name;
 
     newName.classList.add('name-item');
     nameDiv.appendChild(newName);
