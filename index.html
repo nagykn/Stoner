@@ -1,43 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Stoner</title>
-  <link rel="manifest" href="/manifest.json">
- 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
- 
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="white"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Stoner">
-  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-
 <body>
-  <header>
-    <h1>Stoner</h1>
-  </header>
-  <main>
-  <nav>
-  </nav>
-  <form>
-    <input type="text" class="name-input">
-    <button class="name-button" type="submit"><i class="fas fa-plus-square"></i></button>
-  </form>
-  <div class=name-container>
-    <ul class="name-list">
-      
-    </ul>
-  </div>
-
-  </main>
-<script src="js/main.js"></script>
+    <span id="error"></span>
+    <header>
+        <h1>Stoner</h1>
+        <h2>The Game</h2>
+        <nav>
+            <ul>
+                <li><a id="start" href="pages/main.html" onclick="isReady()">Játék kezdése</a></li>
+                <li><a href="pages/addplayer.html">Játékos hozzáadása</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div>
+        <h3>Játékosok: <span id="count"></span></h3>
+        <div class="name-container">
+        <ul class="name-list">
+        </ul>
+        </div>
+        </div>
+    </main>
 </body>
+<script>
+
+  const nameList = document.querySelector('.name-list');
+  const n = document.querySelector('#count');
+  let names;
+  if (localStorage.getItem('names') === null) {
+    names = [];
+  } else {
+    names = JSON.parse(localStorage.getItem('names'));
+  }
+  n.innerText = names.length;
+  names.forEach(name => {
+    const nameDiv = document.createElement('div');
+    nameDiv.classList.add('name');
+
+    const newName = document.createElement('li');
+    newName.innerText = name;
+
+    newName.classList.add('name-item');
+    nameDiv.appendChild(newName);
+
+    nameList.appendChild(nameDiv);
+  });
+  function isReady() {
+    if (names.length < 2) {
+        document.querySelector('#start').href = "#";
+
+        document.querySelector('#error').innerText = 'Túl kevés játékos van hozzáadva!'
+        setTimeout(()=>{
+            document.querySelector('#error').innerText = "";
+        },3000);
+    }
+    }
+</script>
 </html>

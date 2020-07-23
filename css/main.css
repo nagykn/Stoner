@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } 
+body {
+    background-image: url('../bg2.gif');
+    min-height: 100vh;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ul {
+    list-style: none;
+    font-size: large;
+    margin: 1rem;
+}
+a {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 40vh;
+}
+a:hover {
+    background-color: #993399;
+}
+
+header h1 {
+    font-size: 4rem;
+ 
+}
+h1,h2,h3,li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#error {
+    background-color:  #cc0000;
+    margin: 1rem;
+}
+form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form input, form button {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    background: white;
+  }
+  form button {
+    color: #8854d0;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  form button:hover {
+    background: #8854d0;
+    color: white;
+  }
+  .name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .name-list {
+    min-width: 30%;
+    list-style: none;
+  }
+  
+  .name {
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50vh;
+  }
+  
+  .name li {
+    flex: 1;
+  }
+
+  .trash-btn {
+    background: #4b6584;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
