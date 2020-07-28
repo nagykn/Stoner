@@ -40,6 +40,20 @@
             </div>
         </div>
         <button onclick="goTo('init-screen','home-screen','right')">Vissza</button>
+        <button onclick="goTo('init-screen','dificulty-screen','left')">Tovább</button>
+    </div>
+    <div id="dificulty-screen" class="page">
+        <div>
+            <h1>Nehézség</h1>
+            <select id="dificulty" size="4" onchange="setDificulty(this)">
+                <option value="0">Könnyű</option>
+                <option value="1">Közepes</option>
+                <option value="2">Nehéz</option>
+                <option value="3">Hardcore</option>
+              </select>
+        </div>
+        <button onclick="goTo('dificulty-screen','init-screen','right')">Vissza</button>
+        <button onclick="goTo('dificulty-screen','home-screen','left')">Tovább</button>
     </div>
     
     <!-- Settings screen -->
