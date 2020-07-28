@@ -12,21 +12,20 @@
     <script src="js/addplayer.js" defer></script>
 </head>
 <body>
+    <noscript>Javascript (ES6+) szükséges!</noscript>
     <span id="error"></span>
-    <!-- Loading screen -->
-    <div id="loading-screen" class="page">
-        <h1>Loading...</h1>
-    </div>
 
     <!-- Home screen -->
     <div id="home-screen"  class="page activated">
         <div class="home-menu">
-            <h1>Home screen</h1>
+            <h1 class="title">Stoner</h1>
+            
             <button onclick="goTo('home-screen','init-screen','left')">Start</button>
             <button onclick="goTo('home-screen','tutorial-screen','left')">Tutorial</button>
             <button onclick="goTo('home-screen','about-screen','left')">About</button>
         </div>
     </div>
+
 
     <!-- Game init screen -->
     <div id="init-screen"  class="page">
