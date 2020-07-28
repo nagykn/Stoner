@@ -1,5 +1,3 @@
-const KORTY = 20;
-
 class Player{
     constructor(id,name,stand) {
         this.id = id;
