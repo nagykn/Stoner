@@ -15,10 +15,6 @@ function goTo(from,to,direction) {
     to_element.classList.add("activated",`fly-in-${direction}`);
 }
 
-function setDificulty(element) {
-    console.log(document.querySelector("#dificulty").value);
-    
-}
 
 function toggleFullscreen(element) {
 
