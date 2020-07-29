@@ -1,112 +1,79 @@
+var players;
+if (localStorage.getItem('players') === null) {
+  players = [];
+} else {
+  players = JSON.parse(localStorage.getItem('players'));
+}
+
+
 //Selectors
 const nameInput = document.querySelector('.name-input');
 const nameButton = document.querySelector('.name-button');
 const nameList = document.querySelector('.name-list');
 
 //Event Listeners
-document.addEventListener('DOMContentLoaded', getNames);
-nameButton.addEventListener('click', addName);
-nameList.addEventListener('click', deleteName);
 
+document.addEventListener('DOMContentLoaded', (event) =>{
+  players.forEach(player => {
+    createHTML(player.name);
+  });
+});
 
-//Functions
-function addName(event) {
+nameButton.addEventListener('click', (event) => {
   event.preventDefault(); //Form submitting
+  name = nameInput.value.trim().toProperCase()
+  isUnique = true;
+  for (player of players) {
+    if (player.name == name) {
+      isUnique = false;
+      break
+    }
+  }
+  if (name !== "") {
+    if (isUnique) { 
+      let player = new Player(0,name,"");
+      players.push(player);
+      localStorage.setItem('players',JSON.stringify(players));
+      createHTML(name);
+    } else {
+      document.querySelector('#error').innerText = 'Ilyen nevű játékos már létezik!'
+      setTimeout(()=>{
+          document.querySelector('#error').innerText = "";
+      },3000);
+    }
+  }
+  nameInput.value = "";
+});
 
+
+nameList.addEventListener('click', (event) => {
+  const item = event.target;
+  if (item.classList[0] === 'trash-btn') {
+    const name = item.parentElement;
+    const nameText = name.children[0].innerText;
+    players.forEach((player, index) => {
+      if (player.name === nameText) {
+        players.splice(index,1)
+      }
+    });
+    localStorage.setItem('players', JSON.stringify(players));
+    name.remove();
+  }
+});
+
+
+function createHTML(name) {
   const nameDiv = document.createElement('div');
   nameDiv.classList.add('name');
-
   const newName = document.createElement('li');
-  name = nameInput.value.trim().toProperCase()
   newName.innerText = name;
-
   newName.classList.add('name-item');
   nameDiv.appendChild(newName);
-
   const trashButton = document.createElement('button');
   trashButton.innerText = 'Remove';
   trashButton.classList.add('trash-btn');
   nameDiv.appendChild(trashButton);
-  if (name !== "") {
-    if (saveLoacalNames(name)) {
-      nameList.appendChild(nameDiv);
-    }
-  }
-  nameInput.value = "";
-}
-
-function deleteName(event) {
-  const item = event.target;
-  if (item.classList[0] === 'trash-btn') {
-    const name = item.parentElement;
-    removeLocalName(name);
-    name.remove();
-  }
-}
-
-function saveLoacalNames(name) {
-  let names;
-  if (localStorage.getItem('names') === null) {
-    names = [];
-  } else {
-    names = JSON.parse(localStorage.getItem('names'));
-  }
-  const isSame = (v) => v.name !== name; //kétszer van tagadva-->igaz; nem javítom ki, működik
-  if (!names.every(isSame)) {
-    document.querySelector('#error').innerText = 'Ilyen nevű játékos már létezik!'
-    setTimeout(()=>{
-        document.querySelector('#error').innerText = "";
-    },3000);
-    return false
-  } else {
-    let player = new Player(names.length,name,"");
-    names.push(player);
-    localStorage.setItem('names',JSON.stringify(names));
-    return true 
-  }
-}
-
-function getNames() {
-  let names;
-  if (localStorage.getItem('names') === null) {
-    names = [];
-  } else {
-    names = JSON.parse(localStorage.getItem('names'));
-  }
-  names.forEach(player => {
-    const nameDiv = document.createElement('div');
-    nameDiv.classList.add('name');
-
-    const newName = document.createElement('li');
-    newName.innerText = player.name;
-
-    newName.classList.add('name-item');
-    nameDiv.appendChild(newName);
-
-    const trashButton = document.createElement('button');
-    trashButton.innerText = 'Remove';
-    trashButton.classList.add('trash-btn');
-    nameDiv.appendChild(trashButton);
-
-    nameList.appendChild(nameDiv);
-  });
-}
-
-function removeLocalName(name){
-  let names;
-  if (localStorage.getItem('names') === null) {
-    names = [];
-  } else {
-    names = JSON.parse(localStorage.getItem('names'));
-  }
-  const nameText = name.children[0].innerText;
-  names.forEach((player, index) => {
-    if (player.name === nameText) {
-      names.splice(index,1)
-    }
-  });
-
-  localStorage.setItem('names', JSON.stringify(names));
+  nameList.appendChild(nameDiv);  
 }
 
 //Prototypes 

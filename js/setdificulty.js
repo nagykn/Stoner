@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 });
 
 function setDificulty(element) {
-    console.log(document.querySelector("#dificulty").value);
     DIFICULTY = document.querySelector("#dificulty").value
     localStorage.DIFICULTY = DIFICULTY;    
 }

@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="style/fun.css">
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/cards.css">
     <script src="js/data.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/addplayer.js" defer></script>
     <script src="js/setdificulty.js" defer></script>
+    <script src="js/game.js" defer></script>
 </head>
 <body>
     <noscript>Javascript (ES6+) szükséges!</noscript>
@@ -54,7 +56,7 @@
               </select>
         </div>
         <button onclick="goTo('dificulty-screen','init-screen','right')">Vissza</button>
-        <button onclick="goTo('dificulty-screen','home-screen','left')">Tovább</button>
+        <button onclick="goTo('dificulty-screen','game-screen','left')">Tovább</button>
     </div>
     
     <!-- Settings screen -->
@@ -68,15 +70,28 @@
         <button onclick="goTo('tutorial-screen','home-screen','right')">Vissza</button>
     </div>   
 
-    <!-- Tutorial screen -->
+    <!-- About screen -->
     <div id="about-screen" class="page">
         <h1>About</h1>
         <button onclick="goTo('about-screen','home-screen','right')">Vissza</button>
     </div>     
 
     <!-- Game screen -->
-    <div class="page">
-        
+    <div id="game-screen" class="page">
+        <p id="#test">Hi</p>
+        <div id="card">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span>Név</span>
+              </div>
+              <div class="flip-card-back">
+                <span>Stand</span> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <button onclick="start()">start</button>
     </div>
 <button onclick="toggleFullscreen(this)"><i class="fas fa-expand"></i></button>
 </body>
