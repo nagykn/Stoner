@@ -1,9 +1,4 @@
 var players;
-if (localStorage.getItem('players') === null) {
-  players = [];
-} else {
-  players = JSON.parse(localStorage.getItem('players'));
-}
 
 
 //Selectors
@@ -14,6 +9,11 @@ const nameList = document.querySelector('.name-list');
 //Event Listeners
 
 document.addEventListener('DOMContentLoaded', (event) =>{
+  if (localStorage.getItem('players') === null) {
+    players = [];
+  } else {
+    players = JSON.parse(localStorage.getItem('players'));
+  }
   players.forEach(player => {
     createHTML(player.name);
   });
