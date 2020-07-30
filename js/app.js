@@ -29,3 +29,11 @@ function toggleFullscreen(element) {
         element.classList.remove("fullscreen-btn");
     }
 }
+
+function alertError(msg) {
+    navigator.vibrate(200);
+    document.querySelector('#error').innerText = msg;
+    setTimeout(()=>{
+        document.querySelector('#error').innerText = "";
+    },3000);
+}

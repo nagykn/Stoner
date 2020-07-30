@@ -36,10 +36,7 @@ nameButton.addEventListener('click', (event) => {
       localStorage.setItem('players',JSON.stringify(players));
       createHTML(name);
     } else {
-      document.querySelector('#error').innerText = 'Ilyen nevű játékos már létezik!'
-      setTimeout(()=>{
-          document.querySelector('#error').innerText = "";
-      },3000);
+      alertError('Ilyen nevű játékos már létezik!');
     }
   }
   nameInput.value = "";

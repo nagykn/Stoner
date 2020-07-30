@@ -6,7 +6,7 @@ card = document.querySelector("#card");
 test = document.querySelector("#test");
 
 function start() {
-    //Ki a stoner az id 1 pl
+    //Ki a stoner, az id 1 pl
     players.getRandom().stand = 1;
 
     //
