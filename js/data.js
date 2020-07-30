@@ -6,3 +6,9 @@ class Player{
         this.cup = 100;
     }
 }
+
+class Stand{
+    constructor() {
+
+    }
+}

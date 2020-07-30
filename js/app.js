@@ -15,9 +15,19 @@ function goTo(from,to,direction) {
     to_element.classList.add("activated",`fly-in-${direction}`);
 }
 
+function loadJSON(file,callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', file, true);
+    xobj.onreadystatechange = function() {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+        }
+    }
+    xobj.send(null);
+}
 
 function toggleFullscreen(element) {
-
     const docEl = document.documentElement;
     const requestFullscreen = docEl.requestFullscreen || docEl.webkitRequestFullScreen;
     const exitFullscreen = document.exitFullscreen || document.webkitExitFullscreen;
@@ -31,7 +41,7 @@ function toggleFullscreen(element) {
 }
 
 function alertError(msg) {
-    window.navigator.vibrate(400);
+    window.navigator.vibrate(300);
     document.querySelector('#error').innerText = msg;
     setTimeout(()=>{
         document.querySelector('#error').innerText = "";
