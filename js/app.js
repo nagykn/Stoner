@@ -31,7 +31,7 @@ function goTo(from,to,direction) {
 //     });
 // }
 
-function loadJSON(file,callback) {
+function loadJSON(file) {
     return new Promise((resolve,reject) => {
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
