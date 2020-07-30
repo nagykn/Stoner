@@ -31,7 +31,7 @@ function toggleFullscreen(element) {
 }
 
 function alertError(msg) {
-    navigator.vibrate(200);
+    window.navigator.vibrate(400);
     document.querySelector('#error').innerText = msg;
     setTimeout(()=>{
         document.querySelector('#error').innerText = "";
