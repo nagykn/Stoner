@@ -15,16 +15,34 @@ function goTo(from,to,direction) {
     to_element.classList.add("activated",`fly-in-${direction}`);
 }
 
+// function loadJSON(file,callback) {
+//     return new Promise((resolve,reject) => {
+//         var xobj = new XMLHttpRequest();
+//         xobj.overrideMimeType("application/json");
+//         xobj.open('GET', file, true);
+//         xobj.onreadystatechange = function() {
+//             if (xobj.readyState == 4 && xobj.status == "200") {
+//                 resolve(xobj.responseText);
+//             } else {
+//                 reject(xobj.status);
+//             }
+//         }
+//         xobj.send(null);
+//     });
+// }
+
 function loadJSON(file,callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', file, true);
-    xobj.onreadystatechange = function() {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
+    return new Promise((resolve,reject) => {
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', file, true);
+        xobj.onreadystatechange = function() {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                resolve(xobj.responseText);
+            } 
         }
-    }
-    xobj.send(null);
+        xobj.send(null);
+    });
 }
 
 function toggleFullscreen(element) {

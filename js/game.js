@@ -1,20 +1,23 @@
-var stands = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+// let stands = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+let data;
 
 startBtn = document.querySelector("#start");
 div = document.querySelector("#stands");
 
-function start(){
+async function start(){
+    //nem jó a callback promis kell; túl macerás
+    // loadJSON('data.json',(str)=>{
+    //     data = JSON.parse(str);
+    // });
+    data = JSON.parse( await loadJSON("data.json"));
     //Ki a stoner, az id 1 pl
     players.getRandom().stand = 1;
     for (player of players) {
         if (!player.stand) {
-            player.stand = stands.getRandom();
+            player.stand =  data.stands.getRandom().id;
         }
         showStand(player);
     }
-    loadJSON('data.json',(adat)=>{
-        console.log(JSON.parse(adat));
-    });
     startBtn.style.display = "none";
 }
 
