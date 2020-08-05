@@ -1,4 +1,4 @@
-import {shuffle} from './_.js'
+import {shuffle} from 'js/rand.js'
 
 
 let name = document.querySelector("#name");
