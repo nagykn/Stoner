@@ -38,6 +38,9 @@ nameButton.addEventListener('click', (event) => {
     } else {
       alertError('Ilyen nevű játékos már létezik!');
     }
+
+  } else {
+    alertError('Kevés karakter');
   }
   nameInput.value = "";
 });
@@ -58,6 +61,16 @@ nameList.addEventListener('click', (event) => {
   }
 });
 
+function test() {
+  if (3 < players.length && players.length < 17){
+    goTo('init-screen','dificulty-screen','left');
+  } else if (players.length < 4) {
+    alertError(`Minimum négy játékos szükséges az indításhoz!`);
+  } else {
+    alertError("Maximum tizenhat játékos tud résztvenni egyszerre!");
+  }
+}
+
 
 function createHTML(name) {
   const nameDiv = document.createElement('div');
@@ -75,7 +88,7 @@ function createHTML(name) {
 
 //Prototypes 
 String.prototype.toProperCase = function () {
-  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  return this.charAt(0).toUpperCase() + this.substr(1).toLowerCase()
 };
 
 
