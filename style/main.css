@@ -43,25 +43,26 @@
     position: absolute;
     top: 2vh;
 }
-.fs-on {
-    background-color: #34495e;
+/* .fs-on {
+    background-color: green;
     color: white;
-}
+} */
 
-button {
+.btn {
 	font-size: 2rem;
     color: #ecf0f1;
-    background: #2ecc71;
+    background-color: rgba(51, 51, 51,0.5);;
     padding: .5rem;
     margin: .5rem;
 	border: none;
     cursor: pointer;
     outline: none;
+    border-radius: 0.1em;
 }
 
-button:hover,
-button:focus {
-    
+.btn:hover,
+.btn:focus {
+    background-color: rgba(51, 51, 51,0.9);;
     color: white;
     
     
@@ -74,47 +75,59 @@ button:focus {
     height: 100%;
     
 }
-.home-menu > button {
-    max-width: 200px;
-    width: 30vw;
+.home-menu > .btn {
+    width: 200px;
+    padding: 0.5rem 1rem;
 }
 .name {
-    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.3rem;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    background-color: teal;
+    background-color:rgba(52,73,94,0.5);
     padding: 0 1em;
     margin: 1em;
     color: white;
 }
 .name-list {
+    
     margin: 0;
     padding: 0;
 }
 .name-container {
+    background-color: rgba(52,73,94,0.2);
     overflow-x: visible;
     overflow-y: auto;
     max-height: 40vh;
-    background-color: whitesmoke;
     padding: 1em;
     width: 250px;
     
 }
 .trash-btn {
+    
     font-size: 1rem;
+    background-color: rgba(26, 26, 26,0.5);
+    font-size: 1em;
+    height: 1.5em;
+    
+}
+.trash-btn:hover {
+    background-color: rgba(26, 26, 26,0.9);
 }
 .nav {
     position: relative;
     top: 2em;
 }
 .name-input {
+    border: none;
+    border-radius: 0.3em;
     height: 30px;
     width: 100%;
 }
 .name-button {
-    background-color: gray;
+    background-color: rgba(51, 51, 51,0.6);
     color: white
 }
 .name-button:hover,
@@ -131,6 +144,7 @@ form {
     
 }
 #error {
+    
     z-index: 100;
     background-color: red;
     color: white;
@@ -139,3 +153,73 @@ form {
     width: 100%;
     text-align: center;
 }
+
+button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+.previous {
+    background-color:rgba(241, 241, 241,0.8);
+    color: black;
+  }
+  
+  .next {
+    background-color: rgba(51, 51, 51,0.6);
+    color: white;
+  }
+  
+  .round {
+    text-align: center;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+
+  }
+
+  .round:hover,
+  .round:focus{
+    background-color: rgba(241, 241, 241,0.8);
+    color: black;
+  }
+
+  html {
+    height: 100%;
+}
+body {
+    height: 100%;
+      background-image: linear-gradient(#ff5f6d , #ffc371);
+      color: #fff;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+.title {
+    font-size: 6em;
+
+}
+  
+  /* width
+  ::-webkit-scrollbar {
+    width: 2em;
+    
+  }
+  
+  /* Track */
+  /* ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;  */
+    /* border-radius: 2em; */
+  /* }
+   
+  ::-webkit-scrollbar-thumb {
+    background: url(../media/back.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #34495e; */
+    /* border-radius: 2em; */
+  /* } */
+  
+  /* Handle on hover */
+  /* ::-webkit-scrollbar-thumb:hover {
+    /* background: #333;  */
+  /* }  */
